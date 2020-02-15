@@ -1,5 +1,5 @@
 # Edgistify Industry Portal
-Industry portal for employees
+Industry portal for employees built with the MERN stack.
 
 
 ## To run the application locally follow these steps
