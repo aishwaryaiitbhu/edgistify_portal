@@ -1,6 +1,10 @@
 # Edgistify Industry Portal
 Industry portal for employees built with the MERN stack.
 
+## App features
+#### 1. Users can register with their email id and create their own profile
+#### 2. They can publish a post, any registered user can look at all of the posts in order
+
 
 ## To run the application locally follow these steps
 ### Install dependencies for server
