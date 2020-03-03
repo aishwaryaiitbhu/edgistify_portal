@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"; //app.js file is the most importanr file ...if this is complied, then the app runs
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -23,7 +23,7 @@ import Profiles from "./components/profiles/Profiles";
 import Posts from "./components/posts/Posts";
 
 //Check for token
-if (localStorage.jwtToken) {
+if (localStorage.jwtToken) {            //localstorage stores all the authorization headers n login tokens
   //set the auth token header auth
   setAuthToken(localStorage.jwtToken);
   //decode the token and get user information and expiration
@@ -32,7 +32,7 @@ if (localStorage.jwtToken) {
   store.dispatch(setCurrentUser(decoded));
   // check for expired token
   const currentTime = Date.now() / 1000;
-  if (decoded.exp < currentTime) {
+  if (decoded.exp < currentTime) {  //decoded.exp is the expiry time of token
     //Logout user
     store.dispatch(logoutUser());
     store.dispatch(clearCurrentProfile());
@@ -50,7 +50,7 @@ class App extends Component {
             <Navbar />
             <Route exact path='/' component={Landing} />
             <div className='container'>
-              <Route exact path='/register' component={Register} />
+              <Route exact path='/register' component={Register} /> 
               <Route exact path='/login' component={Login} />
               <Route exact path='/profiles' component={Profiles} />
               <Switch>
