@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router(); //router is an instance of express.Router()
 const mongoose = require("mongoose");
 const passport = require("passport"); // verifies token.
 
@@ -152,7 +152,7 @@ router.post(
             .indexOf(req.user.id);
 
           // Splice out of array
-          post.likes.splice(removeIndex, 1); //removers user from ths=at index
+          post.likes.splice(removeIndex, 1); //removers user from the given index
 
           // Save
           post.save().then(post => res.json(post));
@@ -177,7 +177,7 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    Post.findById(req.params.id)
+    Post.findById(req.params.id) //req.params.id is the id of our post
       .then(post => {
         const newComment = {
           text: req.body.text,
@@ -186,10 +186,11 @@ router.post(
         };
 
         // Add to comments array
-        post.comments.unshift(newComment);
+        post.comments.unshift(newComment);  //post.comments is an array 
+      //unshift adds to the beginning of the array. new comment is added to the  =beginning
 
         // Save
-        post.save().then(post => res.json(post));
+        post.save().then(post => res.json(post)); // save gives a promise, the promise is handled by then using a json object
       })
       .catch(err => res.status(404).json({ postnotfound: "No post found" }));
   }
@@ -229,5 +230,5 @@ router.delete(
   }
 );
 
-//export the router
-module.exports = router;
+//export the router here router is an instance...all the get,post,delete requests have been configured in router
+module.exports = router;  // we are exporting router using this line
