@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const passport = require("passport");
+const passport = require("passport"); // verifies token.
 
 // Post model
-const Post = require("../../models/Post");
+const Post = require("../../models/Post");// modles is the schema made and we r importing it here. new post is added as per the schema in 'models'
 // Profile model
 const Profile = require("../../models/Profile");
 
