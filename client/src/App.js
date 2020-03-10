@@ -40,7 +40,57 @@ if (localStorage.jwtToken) {            //localstorage stores all the authorizat
     window.location.href = "/login";
   }
 }
-
+//below contains routes for all the components
+/*
+<Provider store={store}>
+        <Router>
+          <div className='App'>
+            <Navbar />
+            <Route exact path='/' component={Landing} />(landing component route)(exact path is used so that the exact route name is matched when this route is called, eg... '/'and '/register', both have similar startings)
+            <div className='container'>
+              <Route exact path='/register' component={Register} /> (register component route)
+              <Route exact path='/login' component={Login} />(Login Component route)
+              <Route exact path='/profiles' component={Profiles} />(profiles route)
+              <Switch>(private route for dashboard)
+                <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              </Switch>
+              <Switch>(private route for creating profile)
+                <PrivateRoute
+                  exact
+                  path='/create-profile'
+                  component={CreateProfile}
+                />
+              </Switch>
+              <Switch>(private route for editing profile)
+                <PrivateRoute
+                  exact
+                  path='/edit-profile'
+                  component={EditProfile}
+                />
+              </Switch>
+              <Switch>(Adding experience private route)
+                <PrivateRoute
+                  exact
+                  path='/add-experience'
+                  component={AddExperience}
+                />
+              </Switch>
+              <Switch>(adding education private route)
+                <PrivateRoute
+                  exact
+                  path='/add-education'
+                  component={AddEducation}
+                />
+              </Switch>
+              <Switch>(post fedd route)
+                <PrivateRoute exact path='/feed' component={Posts} />
+              </Switch>
+            </div>
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
+*/
 class App extends Component {
   render() {
     return (
