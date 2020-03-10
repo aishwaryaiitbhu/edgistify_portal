@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode"; //used for decoding the jwt token
 import setAuthToken from "./utils/setAuthToken"; //check this file for details
 import { setCurrentUser, logoutUser } from "./actions/authActions"; //check this file for details
-import { Provider } from "react-redux"; //
+import { Provider } from "react-redux"; // it will provide the store which we have created and imported here
 
-import "./App.css";
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
-import Landing from "./components/layout/Landing";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
+import "./App.css";// layouts, text sizes,margins,background used globally  defined in this css file
+import Navbar from "./components/layout/Navbar";//Navbar component
+import Footer from "./components/layout/Footer";//Footer component
+import Landing from "./components/layout/Landing";//Landing component
+import Register from "./components/auth/Register";//Register component
+import Login from "./components/auth/Login";//Login component
 import store from "./store"; //storage of all the states for the application, check the file for details 
 import Dashboard from "./components/dashboard/Dashboard"; //Dashboard component, check the file for details
 import { clearCurrentProfile } from "./actions/profileActions";//check the file for details
@@ -33,10 +33,10 @@ if (localStorage.jwtToken) {            //localstorage stores all the authorizat
   // check for expired token
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {  //decoded.exp is the expiry time of token
-    //Logout user
+    //Logout user and clear current profile, which are imported
     store.dispatch(logoutUser());
     store.dispatch(clearCurrentProfile());
-    //Redirect to login
+    //Redirect to login, if token expired
     window.location.href = "/login";
   }
 }
