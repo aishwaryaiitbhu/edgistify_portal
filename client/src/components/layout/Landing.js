@@ -2,7 +2,7 @@
 import React, { Component } from "react";// We have to inherit from Component
 import { Link } from "react-router-dom";//Links component to routes
 import { PropTypes } from "prop-types";//for defining attributes of a component
-import { connect } from "react-redux";//connects the component which we are creating(here it is the landing component) to the redux store which we have created
+import { connect } from "react-redux";//connects the component which we are creating(here it is the landing component) to the redux store which we have created and functions which dispaches actions which changes the states
 
 //An important point here is to note the difference between 'state' and 'props'
 /*
