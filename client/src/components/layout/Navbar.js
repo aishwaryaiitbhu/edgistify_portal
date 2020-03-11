@@ -3,18 +3,21 @@ import React, { Component } from "react"; //all components created have to be in
 import { Link } from "react-router-dom";//Link to other components
 import PropTypes from "prop-types";//Defining attributes(props), already discussed the difference between props and states and why we need props
 import { connect } from "react-redux";// connect our component to the store which we have created
-import { logoutUser } from "../../actions/authActions";//an action which we need in this Navbar and we have to dispatch it
-import { clearCurrentProfile } from "../../actions/profileActions";//also an action which we need after logging out the current user
+import { logoutUser } from "../../actions/authActions";//an action which we need in this Navbar and we have to dispatch it, check file for more details
+import { clearCurrentProfile } from "../../actions/profileActions";//also an action which we need after logging out the current user, check file for more details
 
 class Navbar extends Component {
-  onLogoutClick(e) {
-    e.preventDefault();
-    this.props.clearCurrentProfile();
-    this.props.logoutUser();
+  //defining a custom function for logout and we will call the actions(which will be dispatched) which are associated with logout
+  onLogoutClick(e) {//pass in an event 'e'
+    e.preventDefault();//preventing the default action associated with the event
+    this.props.clearCurrentProfile();//clear current profile(a part of props)
+    this.props.logoutUser();//logout user(a part of props)
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;// destructuring to get the auth boolean from props
+    //we will create two constants do be displayed in render, means if auth is true, we will display authlinks(means logged in links)
+    //otherwise we will display guest links means those which will be displayed when someone visits who is not logged in
     const authLinks = (
       <ul className='navbar-nav ml-auto'>
         <li className='nav-item'>
