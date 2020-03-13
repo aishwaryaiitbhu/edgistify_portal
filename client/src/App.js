@@ -1,20 +1,31 @@
 import React, { Component } from "react"; //app.js file is the most importanr file ...if this is complied, then the app runs
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// component has been written in brackets bcos we r just importing a part from react. Examples of components r login n register
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"; 
+// react router dom is a router library. all public n private routes r made from it. 
+//browser router is used for back button.
+//switch is being imported bcos private routes r defines within switch
 import jwt_decode from "jwt-decode"; //used for decoding the jwt token
+// used for getting token expiry time, user login info n bearer token's actual value.
+// bearer token is needed wherever there r auth headers. auth headers r areas where pvt token is needed.
 import setAuthToken from "./utils/setAuthToken"; //check this file for details
 import { setCurrentUser, logoutUser } from "./actions/authActions"; //check this file for details
 import { Provider } from "react-redux"; // it will provide the store which we have created and imported here
+// it will make available the Store which we have created. Store stores auth headers n app states.
 
 import "./App.css";// layouts, text sizes,margins,background used globally  defined in this css file
+// the dot n slash indicate that app.css file is in this folder itself
 import Navbar from "./components/layout/Navbar";//Navbar component
 import Footer from "./components/layout/Footer";//Footer component
 import Landing from "./components/layout/Landing";//Landing component
 import Register from "./components/auth/Register";//Register component
 import Login from "./components/auth/Login";//Login component
 import store from "./store"; //storage of all the states for the application, check the file for details 
+// 'store' stores all states of application n autherization headers. if Store is not included, states ll nt be saved.
 import Dashboard from "./components/dashboard/Dashboard"; //Dashboard component, check the file for details
 import { clearCurrentProfile } from "./actions/profileActions";//check the file for details
+// when logging out,the profile data must be deleted
 import PrivateRoute from "./components/common/PrivateRoute";//Private routes for non public routes, check for details
+// this private route has been put in switch bcos pvt routes r always put inside switch
 import CreateProfile from "./components/create-profile/CreateProfile";// create profile component
 import EditProfile from "./components/edit-profile/EditProfile";//edit profile component
 import AddExperience from "./components/add-creditentials/AddExperience";// add experience component
@@ -25,6 +36,7 @@ import Posts from "./components/posts/Posts";//Posts component
 //Check for token
 if (localStorage.jwtToken) {            //localstorage stores all the authorization headers n login tokens
   //set the auth token and header auth using the setAuthToken which we imported
+  
   setAuthToken(localStorage.jwtToken);
   //decode the token and get user information and expiration
   const decoded = jwt_decode(localStorage.jwtToken); //decode the jwt login token generated
