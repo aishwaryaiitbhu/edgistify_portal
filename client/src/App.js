@@ -67,11 +67,12 @@ if (localStorage.jwtToken) {            //localstorage stores all the authorizat
 // whatevere html is within the render, that comes out on the browseer screen
 /*
 <Provider store={store}> //Provider tag's attribute is store, n we r assigning it to that very store we had created n imported.
-        <Router>
+        <Router> // all the routes will come inside router tag
           <div className='App'>
-            <Navbar />
+            <Navbar /> //it has no attributes
             <Route exact path='/' component={Landing} />(landing component route)(exact path is used so that the exact route name is matched when this route is called, eg... '/'and '/register', both have similar startings)
-            <div className='container'>
+           //localhost3000/ se landing page will open. 
+           <div className='container'> // one container has login, register n all profiles.
               <Route exact path='/register' component={Register} /> (register component route)
               <Route exact path='/login' component={Login} />(Login Component route)
               <Route exact path='/profiles' component={Profiles} />(profiles route)
