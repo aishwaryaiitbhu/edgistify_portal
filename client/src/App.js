@@ -30,31 +30,43 @@ import CreateProfile from "./components/create-profile/CreateProfile";// create 
 import EditProfile from "./components/edit-profile/EditProfile";//edit profile component
 import AddExperience from "./components/add-creditentials/AddExperience";// add experience component
 import AddEducation from "./components/add-creditentials/AddEducation";//add education component
-import Profiles from "./components/profiles/Profiles";// All profiles component, (under a public route)
+import Profiles from "./components/profiles/Profiles";// All profiles component, (under a public route) 
+// when u use this, u will be able to see all the users profiles on the portal
 import Posts from "./components/posts/Posts";//Posts component
 //check the components folder for each component details
 //Check for token
 if (localStorage.jwtToken) {            //localstorage stores all the authorization headers n login tokens
+  // the statement in bracket after IF checks whether login token is valid or not
   //set the auth token and header auth using the setAuthToken which we imported
   
-  setAuthToken(localStorage.jwtToken);
+  setAuthToken(localStorage.jwtToken); //jwt token is the login token.
+  //LOCALSTORAGE.JWTTOKEN means bearer token ki value
+  // setauthtoken assigns the value of bearer token to the authentication header of the pvt route
   //decode the token and get user information and expiration
   const decoded = jwt_decode(localStorage.jwtToken); //decode the jwt login token generated
-  //set the current user using the payload in jwt token and isAuthenticated to true
-  store.dispatch(setCurrentUser(decoded));
-  // check for expired token
-  const currentTime = Date.now() / 1000;
+  
+  //payload means user information
+  //const is is used to declare the constant decoded.
+  store.dispatch(setCurrentUser(decoded)); //set the current user using the payload in jwt token and isAuthenticated to true
+ 
+  //in store.dispacth, store stands fr the store we had created. dispatch means to dispatch some state or some action.
+  
+  const currentTime = Date.now() / 1000;  // check for expired token
   if (decoded.exp < currentTime) {  //decoded.exp is the expiry time of token
-    //Logout user and clear current profile, which are imported
+    //Logout user and clear current profile, which are imported 
+    //these 2 actions ie logput user n clear current profile were imported n have to be dispatched from the store.
     store.dispatch(logoutUser());
     store.dispatch(clearCurrentProfile());
     //Redirect to login, if token expired
-    window.location.href = "/login";
+    window.location.href = "/login";  //href is used fr hyperlinking
+    //this pushes to login page if the expiry time has been passed.
   }
 }
 //below contains routes for all the components
+//html code is always written within the render function.
+// whatevere html is within the render, that comes out on the browseer screen
 /*
-<Provider store={store}>
+<Provider store={store}> //Provider tag's attribute is store, n we r assigning it to that very store we had created n imported.
         <Router>
           <div className='App'>
             <Navbar />
