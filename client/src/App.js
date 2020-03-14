@@ -21,6 +21,7 @@ import Register from "./components/auth/Register";//Register component
 import Login from "./components/auth/Login";//Login component
 import store from "./store"; //storage of all the states for the application, check the file for details 
 // 'store' stores all states of application n autherization headers. if Store is not included, states ll nt be saved.
+// app has components n components has states.
 import Dashboard from "./components/dashboard/Dashboard"; //Dashboard component, check the file for details
 import { clearCurrentProfile } from "./actions/profileActions";//check the file for details
 // when logging out,the profile data must be deleted
@@ -69,15 +70,16 @@ if (localStorage.jwtToken) {            //localstorage stores all the authorizat
 <Provider store={store}> //Provider tag's attribute is store, n we r assigning it to that very store we had created n imported.
         <Router> // all the routes will come inside router tag
           <div className='App'>
-            <Navbar /> //it has no attributes
+            <Navbar /> //it has no attributes, therefore no need of any containers
+            //navbar k states ll change during login n logout
             <Route exact path='/' component={Landing} />(landing component route)(exact path is used so that the exact route name is matched when this route is called, eg... '/'and '/register', both have similar startings)
            //localhost3000/ se landing page will open. 
            <div className='container'> // one container has login, register n all profiles.
-              <Route exact path='/register' component={Register} /> (register component route)
-              <Route exact path='/login' component={Login} />(Login Component route)
-              <Route exact path='/profiles' component={Profiles} />(profiles route)
+              <Route exact path='/register' component={Register} /> (register component route)//public route for register
+              <Route exact path='/login' component={Login} />(Login Component route) //this is a public route for login
+              <Route exact path='/profiles' component={Profiles} />(profiles route)//public route fr all profiles
               <Switch>(private route for dashboard)
-                <PrivateRoute exact path='/dashboard' component={Dashboard} />
+                <PrivateRoute exact path='/dashboard' component={Dashboard} />  //making a pvt route fr dashboard
               </Switch>
               <Switch>(private route for creating profile)
                 <PrivateRoute
