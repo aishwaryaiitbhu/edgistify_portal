@@ -77,6 +77,7 @@ class Landing extends Component {
   }
 }
 //defining the props of the landing component
+//proptypes will be executed before render...this is bcos lifecycle method is using the proptypes
 Landing.propTypes = {
   auth: PropTypes.object.isRequired  //auth is an object which is required.
 };
