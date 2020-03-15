@@ -9,38 +9,38 @@ import TextFieldGroup from "../common/TextFieldGroup";//custom tag TextFieldGrou
 
 class Register extends Component {
   constructor() {
-    super();
-    this.state = {
+    super();// to call parent class constructor
+    this.state = { //initial state is empty
       name: "",
       email: "",
       password: "",
       password2: "",
       errors: {}
     };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this); //binding the onChange method to 'this' so that it is accessed by calling from 'this' keyword
+    this.onSubmit = this.onSubmit.bind(this);//binding the onSubmit method to 'this' so that it is accessed by calling from 'this' keyword
   }
-  componentDidMount() {
+  componentDidMount() {// lifecylce method, here we will put those statements which will be there after the HTML has been rendered on the browser
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/dashboard"); //push to dashboard if user is logged in
     }
   }
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {// another lifecycle method, runs when our component is reused(means it recieves new props)
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      this.setState({ errors: nextProps.errors });//if errors are recieved as new props, set the errors state using this.setState(can only be called outside an action)
     }
   }
-  onChange(e) {
+  onChange(e) {// to change the HTML rendered, ie when user inputs new values in the text field etc.
     this.setState({ [e.target.name]: e.target.value });
   }
-  onSubmit(e) {
+  onSubmit(e) { // a function to be called on submitting the registration form, takes in an event e
     e.preventDefault();
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
-    };
+    };//new user's values will be set from state
 
     this.props.registerUser(newUser, this.props.history);
   }
