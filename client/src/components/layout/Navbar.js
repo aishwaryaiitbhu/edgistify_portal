@@ -28,6 +28,8 @@ class Navbar extends Component {
     //proptypes have been made below, n then if we have to access something from props, we do this.props. xxxxx
     //we will create two constants do be displayed in render, means if auth is true, we will display authlinks(means logged in links)
     //otherwise we will display guest links means those which will be displayed when someone visits who is not logged in
+    
+    /*
     const authLinks = (//logged in pr authlinks will be rendered
       <ul className='navbar-nav ml-auto'> //for left align
         <li className='nav-item'> //li tag is for list items
@@ -65,9 +67,47 @@ class Navbar extends Component {
         </li>
       </ul>
     );
-
-    return (
-      <nav className='navbar navbar-expand-sm navbar-dark bg-dark mb-4'> // by default
+    */
+    
+    const authLinks = (
+      <ul className='navbar-nav ml-auto'> 
+        <li className='nav-item'>
+          <Link className='nav-link' to='/feed'>
+            Posts
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <Link className='nav-link' to='/dashboard'> 
+            Dashboard
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <a  
+            href=' ' 
+            onClick={this.onLogoutClick.bind(this)}
+            className='nav-link'
+          >
+            Logout
+          </a>
+        </li>
+      </ul>
+    );
+    const guestLinks = ( 
+      <ul className='navbar-nav ml-auto'>
+        <li className='nav-item'>
+          <Link className='nav-link' to='/register'>
+            Sign Up
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <Link className='nav-link' to='/login'>
+            Login
+          </Link>
+        </li>
+      </ul>
+    );
+/*
+<nav className='navbar navbar-expand-sm navbar-dark bg-dark mb-4'> // by default
         <div className='container'> // div tags r used to make containers
           <Link className='navbar-brand' to='/'> // slash is being used to redirect it to landing page whose url is localhost3000/
             EDGISTIFY
@@ -76,6 +116,36 @@ class Navbar extends Component {
             className='navbar-toggler' //button tag is for mobile layout
             type='button'
             data-toggle='collapse' //these attributes to scale aspect ratio wrt mobile
+            data-target='#mobile-nav'
+          >
+            <span className='navbar-toggler-icon'></span>
+          </button>
+
+          <div className='collapse navbar-collapse' id='mobile-nav'>
+            <ul className='navbar-nav mr-auto'>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/profiles'>
+                  {" "}
+                  Know Others
+                </Link>
+              </li>
+            </ul>
+            {isAuthenticated ? authLinks : guestLinks} 
+          </div>
+        </div>
+      </nav>
+*/
+
+    return (
+      <nav className='navbar navbar-expand-sm navbar-dark bg-dark mb-4'> 
+        <div className='container'> 
+          <Link className='navbar-brand' to='/'> 
+            EDGISTIFY
+          </Link>
+          <button
+            className='navbar-toggler' 
+            type='button'
+            data-toggle='collapse'
             data-target='#mobile-nav'
           >
             <span className='navbar-toggler-icon'></span>
