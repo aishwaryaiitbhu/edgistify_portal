@@ -1,18 +1,18 @@
 //Register user
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER } from "./types";// types for the kind of data we will dispatch after the response is recieved after an action(axios request)
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("/api/users/register", userData)
-    .then(res => history.push("/login"))
+    .post("/api/users/register", userData)//actual post request
+    .then(res => history.push("/login"))//it returns a promise, then we will redirect to login, if successfull
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
-      })
+      }) //if any errors occur, we will dispatch the type 'GET_ERRORS'( see the errorReducer) and with errors data as payload 
     );
 };
 //Login User request
