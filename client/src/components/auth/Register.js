@@ -49,6 +49,52 @@ class Register extends Component {
     const { errors } = this.state;
     //const { user } = this.props.auth;
     return (
+      /*
+      <div className='register'>
+        <div className='container'>(A container inside the main div tag)
+          <div className='row'>(a row)
+            <div className='col-md-8 m-auto'>(a div tag with auto align and margin)
+              <h1 className='display-4 text-center'>Sign Up</h1>
+              <p className='lead text-center'>Create your account</p>
+              <form noValidate onSubmit={this.onSubmit}>
+                <TextFieldGroup(TextFiekdGroup custom tag for name)
+                  placeholder='Name'
+                  name='name'
+                  value={this.state.name}
+                  onChange={this.onChange}
+                  error={errors.name}
+                />
+                <TextFieldGroup(TextFiekdGroup custom tag for email)
+                  placeholder='Email Address'
+                  name='email'
+                  type='email'
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}
+                />
+                <TextFieldGroup(TextFiekdGroup custom tag for password)
+                  placeholder='Password'
+                  name='password'
+                  type='password'
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
+                />
+                <TextFieldGroup(TextFiekdGroup custom tag for Password conf)
+                  placeholder='Confirm Password'
+                  name='password2'
+                  type='password'
+                  value={this.state.password2}
+                  onChange={this.onChange}
+                  error={errors.password2}
+                />
+                <input type='submit' className='btn btn-info btn-block mt-4' />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      */
       <div className='register'>
         <div className='container'>
           <div className='row'>
@@ -96,12 +142,13 @@ class Register extends Component {
     );
   }
 }
+//props for this component
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired 
 };
 
-const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });
+const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });//mapping from state to props
 
 export default connect(mapStateToProps, { registerUser })(withRouter(Register));//withrouter is used here
