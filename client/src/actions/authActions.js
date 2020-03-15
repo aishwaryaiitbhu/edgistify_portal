@@ -7,7 +7,7 @@ import axios from "axios";
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)//actual post request
-    .then(res => history.push("/login"))//it returns a promise, then we will redirect to login, if successfull
+    .then(res => history.push("/login"))//it returns a promise, then we will redirect to login, if successful
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
