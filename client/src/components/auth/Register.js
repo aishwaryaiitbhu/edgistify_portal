@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";//we are creating a class based component, so we have to inherit from Component
+import PropTypes from "prop-types";// for defining props
 //import axios from "axios";
 import { withRouter } from "react-router-dom";
 //import classnames from "classnames";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
-import TextFieldGroup from "../common/TextFieldGroup";
+import { connect } from "react-redux";//connecting the component to the store we created
+import { registerUser } from "../../actions/authActions";//action for this component
+import TextFieldGroup from "../common/TextFieldGroup";//custom tag TextFieldGroup with attributes, check file for details
 
 class Register extends Component {
   constructor() {
