@@ -1,7 +1,7 @@
 import React, { Component } from "react";//we are creating a class based component, so we have to inherit from Component
 import PropTypes from "prop-types";// for defining props
 //import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom"; //used to redirect to another component from within the action
 //import classnames from "classnames";
 import { connect } from "react-redux";//connecting the component to the store we created
 import { registerUser } from "../../actions/authActions";//action for this component
@@ -42,7 +42,7 @@ class Register extends Component {
       password2: this.state.password2
     };//new user's values will be set from state
 
-    this.props.registerUser(newUser, this.props.history);
+    this.props.registerUser(newUser, this.props.history); //we have imported the withRouter, hence we can pass this.props.history and we have delcared the redirect logic inside the registerUser action as second parameter
   }
 
   render() {
@@ -104,4 +104,4 @@ Register.propTypes = {
 
 const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));//withrouter is used here
